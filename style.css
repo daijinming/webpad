@@ -1,0 +1,27 @@
+.fl-right {
+    float: right;
+}
+.record{
+	cursor:pointer;
+}
+.record:hover{
+	text-decoration:underline;
+}
+.mn-left{
+	margin-left:10px;
+}
+.center{
+	text-align:left;
+}
+.records-list{
+	margin-top:20px;
+}
+.form-control{
+	width:95%;
+}
+.mr-right-42{
+	margin-right: 42px;
+}
+.width97{
+	width:97%
+}
