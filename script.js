@@ -64,7 +64,6 @@ let notepadStorage = {
 };
 let date = new Date();
 let time1 = date.pattern("MM-dd hh:mm:ss");
-
 let app = new Vue({
     el: '#app',
     data: {
