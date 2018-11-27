@@ -1,3 +1,4 @@
+/*
 .fl-right {
     float: right;
 }
@@ -24,4 +25,92 @@
 }
 .width97{
 	width:97%
+}*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+#app, #main {
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+textarea {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-size: 2rem;
+    padding: 4rem;
+    line-height: 1.4;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans TC', sans-serif;
+
+    margin: 20px;
+}
+
+textarea:focus {
+    outline: 0;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    max-height: 560px;
+}
+
+.header-bar {
+    background-color: #1F6FB5;
+    color: #FFF;
+    width: 100%;
+    min-height: 60px;
+    font: 42px bold;
+    padding-left: 10px;
+    border-bottom: #9DD3FA 10px solid;
+}
+
+.side-bar {
+    padding: 0;
+    margin: 0;
+    /*background-color: #9DD3FA;*/
+    background-color: #FCD692;
+    border-right: #1F6FB5 1px solid;
+    overflow: hidden;
+}
+
+.ta {
+    background-color: #FAFFEB;
+}
+
+.operation {
+    height: 38px;
+    background-color: #FFFFFF;
+    border: #1F6FB5 1px solid;
+    border-left: none;
+    border-radius: 1px;
+    font: 16px bold;
+}
+
+.btn-add {
+    border-right: #1F6FB5 2px solid;
+    border-left: #1F6FB5 1px solid;
+    border-radius: 5px 0 0 5px;
+}
+
+ol {
+    padding-left: 10px;
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 2px;
+    border-bottom: #1F6FB5 1px solid;
 }

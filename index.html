@@ -1,104 +1,57 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8" />
-  <title>web记事本</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="style.css" rel="stylesheet">
-  <!--[if IE]>
-   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  
-  <style>
-      @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
-      textarea{
-		width: 100vw;
-    	height: 100vh;
-		box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		font-size:2rem;
-		padding:4rem;
-		line-height:1.4;
-		border: none;
-		display: flex;
-    	align-items: center;
-    	justify-content: center;
-    	font-family: 'Noto Sans TC', sans-serif;
-	}
-	textarea:focus{
-    	outline: 0;
-	}
-     </style>
- </head>
- <body >
-	
-  <div  id="app">
-	  <div class="row">
-		<div class="col-md-2 center">
-			<h1>{{title}}</h1>
-		</div>
-		<div class="col-md-10" style="text-align:right">
-		   
-		</div>
-	  </div>
-      
-		
-      
-	  <div class="row">
-		<div class="col-md-2 center">
-            <button class="btn btn-info"
-					@click="addRecord"
-					v-show="showAdd"
-			>新增记录</button><button class="btn btn-primary fl-right mn-left"
-					@click="deleteRecord(editedRecord)"
-					v-show="showDelete"
-				>删除</button><br/>
-			<ol class="records-list">
-				<li v-for="record in records |orderBy 'id' -1" 
-					class="record"
-					@click="editRecord(record)" >
-                    {{record.title}}
-				</li>
-			</ol>
-			
-		</div>
-		<div class="col-md-10 border-left-0">
-            
-            
-            
-            
-            <br/>
-            
-			<input type="text" class="form-control" v-model="RecordTitle" placeholder="标题" style="width:200px;float:left;"/>
-            <input type="text" class="form-control" v-model="RecordURL" placeholder="分享地址" style="width:350px;float:left;"/>
-            <button class="btn fl-left mn-left" @click="shareRecord(editedRecord)" style="float:left;">生成分享URL</button>
-            
-            <br/>
-             <br/>
-			<textarea class="form-control" v-model="RecordMessage" placeholder="消息内容" autofocus spellcheck="false" rows="20" ></textarea><br>
-            
-            <div class="row width97">
-				 
-                
-                
-                <button class="btn btn-success fl-right mn-left"
-					@click="saveRecord(editedRecord)"
-				>保存</button>
-			</div>
-		</div>
-	  </div>
-  </div>
-  
-  
-  <footer>
-     
-      
-  </footer>
-     
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="vue.js"></script>
-     <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
-  <script src="script.js"></script>
- </body>
+<head>
+    <meta charset="utf-8"/>
+    <title>web记事本</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet">
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="app">
+    <div>
+        <div class="header-bar">
+            {{title}}
+        </div>
+    </div>
+    <div class="row" id="main">
+        <div class="col-md-2 side-bar">
+            <div class="row">
+                <div class="col-md-6 btn-add btn operation" @click="addRecord">新增记录</div>
+                <div class="col-md-6 btn-del btn operation" @click="deleteRecord(editedRecord)">删除</div>
+            </div>
+            <div>
+                <ol>
+                    <li v-for="record in records |orderBy 'id' -1"
+                        class="record"
+                        @click="editRecord(record)">
+                        {{record.title}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-md-10 ta">
+            <div class="row">
+                <input type="text" class="col-md-6" v-model="RecordTitle" placeholder="标题"/>
+                <input type="text" class="col-md-4" v-model="RecordURL" placeholder="分享地址"/>
+                <button class="btn btn-default col-md-1" @click="shareRecord(editedRecord)">生成分享URL</button>
+                <button class="btn btn-success col-md-1" @click="saveRecord(editedRecord)">保存</button>
+            </div>
+            <div class="row container">
+            <textarea class="form-control col-md-12" v-model="RecordMessage" placeholder="消息内容" autofocus spellcheck="false"
+            ></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="vue.js"></script>
+<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script src="script.js"></script>
+</body>
 </html>
