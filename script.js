@@ -131,7 +131,7 @@ let app = new Vue({
         },
         shareRecord: function (record) {//生成分享URL
             this.$http.post('https://elef.top/api.php', {
-                type: "txt",
+                type: "md",
                 text: record.message
             }, {
                 emulateJSON: true
