@@ -5,8 +5,8 @@
     <title>web记事本</title>
     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    <!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <!--[if lt IE 9]>
+      <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -18,9 +18,11 @@
     </div>
     <div class="row" id="main">
         <div class="col-md-2 side-bar">
-            <div class="row">
-                <div class="col-md-6 btn-add btn operation" @click="addRecord">新增记录</div>
+            <div class="row" style="margin:0px;">
+
                 <div class="col-md-6 btn-del btn operation" @click="deleteRecord(editedRecord)">删除</div>
+                <div class="col-md-6 btn-add btn operation" @click="addRecord"><i class="fa fa-plus"></i>新增记录</div>
+
             </div>
             <div>
                 <ol>
@@ -40,8 +42,7 @@
                 <button class="btn btn-success col-md-1" @click="saveRecord(editedRecord)">保存</button>
             </div>
             <div class="row container">
-            <textarea class="form-control col-md-12" v-model="RecordMessage" placeholder="消息内容" autofocus spellcheck="false"
-            ></textarea>
+                <textarea id="textarea" class="form-control col-md-12" v-model="RecordMessage" placeholder="消息内容" autofocus spellcheck="false"></textarea>
             </div>
         </div>
     </div>
@@ -52,5 +53,37 @@
 <script src="vue.js"></script>
 <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
 <script src="script.js"></script>
+<script>
+    
+    document.getElementById('textarea').onkeydown = function (e) {
+        if (e.keyCode == 9) {
+            insertAtCursor('    ');
+            return false;
+        }
+    }
+
+   
+    function insertAtCursor(myValue) {
+        myField = document.getElementById("textarea");
+        //IE support
+        if (document.selection) {
+            myField.focus();
+            sel = document.selection.createRange();
+            sel.text = myValue;
+        }
+            //MOZILLA and others
+        else if (myField.selectionStart || myField.selectionStart == '0') {
+            var startPos = myField.selectionStart;
+            var endPos = myField.selectionEnd;
+            myField.value = myField.value.substring(0, startPos)
+	            + myValue
+	            + myField.value.substring(endPos, myField.value.length);
+            myField.selectionStart = startPos + myValue.length;
+            myField.selectionEnd = startPos + myValue.length;
+        } else {
+            myField.value += myValue;
+        }
+    }
+</script>
 </body>
 </html>
