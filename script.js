@@ -130,7 +130,7 @@ let app = new Vue({
             this.showDelete = true
         },
         shareRecord: function (record) {//生成分享URL
-            this.$http.post('https://elef.top/api.php', {
+            this.$http.post('http://elef.top/api.php', {
                 type: "md",
                 text: record.message
             }, {
